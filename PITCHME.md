@@ -15,7 +15,7 @@ Leonhard Applis - 05.11.2018
 <div>
 <div><h3> Problem I: similiar colours</h3></div>
 <div>
-    <img src="images/simcolour.png" style="width: 60%; height: 60%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
+<img src="images/simcolour.png" style="width: 60%; height: 60%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
 </div>
 </div>
 +++?image=images/gradientchange.jpg
@@ -25,7 +25,7 @@ Leonhard Applis - 05.11.2018
 <div>
 <div><h3> Problem III: Random Noise</h3></div>
 <div>
-    <img src="images/noise.png" style="width: 60%; height: 60%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
+<img src="images/noise.png" style="width: 60%; height: 60%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
 </div>
 </div>
 +++
@@ -58,37 +58,37 @@ Requirements: <br/>
 +++
 <div style="align-items: center;">
 <h3>One dimensional approach</h3> 
-    <div style="width:100% ; height=60%">
-        <img src="images/1DGradient.png" style="width: 60%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
-    </div>
+<div style="width:100% ; height=60%">
+<img src="images/1DGradient.png" style="width: 60%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
+</div>
 <div style="width:80% ; height=30%">
-    take one row of the matrix, and plot a function and a derivative
+take one row of the matrix, and plot a function and a derivative
 </div>
 </div>
 +++
 <div style="align-items: center ;">
-    <div> Problem: Image can only be seen as discrete Function (Pixel per Pixel) </div>
-    <div> Therefore: $$\dfrac{df}{dx}(u) \approx \dfrac{f(u+1) - f(u-1)}{(u+1)-(u-1)} = \dfrac{f(u+1) - f(u-1)}{2}$$ </div>   
+<div> Problem: Image can only be seen as discrete Function (Pixel per Pixel) </div>
+<div> Therefore: $$\dfrac{df}{dx}(u) \approx \dfrac{f(u+1) - f(u-1)}{(u+1)-(u-1)} = \dfrac{f(u+1) - f(u-1)}{2}$$ </div>   
 </div>
 +++
 <div>
-    <div>If working with full images,we got two dimensions and therefore two partial derivations:  </div>
-    <div>$$I_x = \dfrac{\partial I}{\partial x}(u,v) , I_y = \dfrac{\partial I}{\partial y}(u,v)$$ </div>
-    <div>the <b>gradient</b> at the point (u,v) is
-        <img src="images/texGradient.JPG" style="width: 70%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/>
-    </div>
-    <div> and the <b>magnitude</b> <br/> $$|\nabla I|=\sqrt{I_x^2 + I_y^2}$$ </div>
+<div>If working with full images,we got two dimensions and therefore two partial derivations:  </div>
+<div>$$I_x = \dfrac{\partial I}{\partial x}(u,v) , I_y = \dfrac{\partial I}{\partial y}(u,v)$$ </div>
+<div>the <b>gradient</b> at the point (u,v) is
+<img src="images/texGradient.JPG" style="width: 70%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/>
+</div>
+<div> and the <b>magnitude</b> <br/> $$|\nabla I|=\sqrt{I_x^2 + I_y^2}$$ </div>
 </div>
 +++
 ![2D Derivates](images/2DEdgeGradient.PNG)
 +++
 <div>
-    <h3> Applying a filter </h3>
-    <div>Transfering the gradient to a linear filter is simple:</div>
-        <div>
-        <img src="images/texLinIX.jpg" style="width: 30%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
-        <img src="images/texLinY.JPG" style="width: 30%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
-    </div>
+<h3> Applying a filter </h3>
+<div>Transfering the gradient to a linear filter is simple:</div>
+<div>
+<img src="images/texLinIX.jpg" style="width: 30%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
+<img src="images/texLinY.JPG" style="width: 30%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
+</div>
 </div>
 ---
 ## Advanced gradient-based edgedetection
@@ -101,8 +101,8 @@ basic Idea how we can apply 3x3 filters to our picture
 <div style="align-items: center;">
 <h3>Prewitt Operator</h3> 
 <div style="width:100% ; height=60%">
-    <img src="images/texPrewittX.JPG" style="width: 40%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
-    <img src="images/texPrewittY.JPG" style="width: 40%; height:100% ; margin-top: 0px; border: none; background: none; box-shadow: none;"/>
+<img src="images/texPrewittX.JPG" style="width: 40%; height: 100%; margin-top: 0px; border: none; background: none; box-shadow: none;"/> 
+<img src="images/texPrewittY.JPG" style="width: 40%; height:100% ; margin-top: 0px; border: none; background: none; box-shadow: none;"/>
 </div>
 <div style="width:80% ; height=30%">
 <img src="images/texPrewittGradient.JPG" style="heigth: 150%; margin-top: 0px; border: none; background: none; box-shadow: none;"/>
@@ -122,10 +122,10 @@ basic Idea how we can apply 3x3 filters to our picture
 +++
 <div>
 <h3>General Magnitude</h3>
-    <div>
-    <img src="images/texGeneralMagnitude.JPG" style="heigth: 150%; margin-top: 0px; border: none; background: none; box-shadow: none;"/>    
-    </div>
-    <div>holds for every Operator </div>
+<div>
+<img src="images/texGeneralMagnitude.JPG" style="heigth: 150%; margin-top: 0px; border: none; background: none; box-shadow: none;"/>    
+</div>
+<div>holds for every Operator </div>
 </div>
 +++
 ### Calculating the direction
