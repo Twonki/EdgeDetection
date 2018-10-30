@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,titlepage,oneside,mathserif,serif]{beamer}
+\documentclass[9pt,a4paper,titlepage,oneside,mathserif,serif]{beamer}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -46,7 +46,86 @@
 	In Image Processing, an edge can be defined as a set of contiguous pixel positions where an abrupt change of intensity, gray- or color-values occur. Edges represent boundaries between objects and background. Sometimes, the edge-pixel-sequence may be broken due to insufficient intensity difference.(Malay K. Pakhira )
 \end{frame}	
 \section{Basics of gradient-based edgedetection}
+\begin{frame}
+\frametitle{Requirements}
+\begin{enumerate}
+	\item color values known 
+	\item picture scale known 
+	\item loaded as pixelmatrix 
+\end{enumerate}
+\end{frame}	
+\subsection{One dimensional approach}
+\begin{frame}
+\frametitle{One dimensional approach}
+\begin{center}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/1DGradient}
+		\caption[1D Gradient]{One dimensional image function and derivation}
+		\label{fig:1dgradient}
+	\end{figure}
+	\b{Only applyable with known, steady functions}
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Approximating discrete derivation}
+Problem: the image function is discrete, therefore we need to approximate the derivation
 
+
+\begin{center}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/1DGradientApproximation}
+		\caption[1D Gradient Approximation]{Approximation of the derivation for discrete imagefunctions}
+		\label{fig:1dgradientapprox}
+	\end{figure}
+	$\dfrac{df}{dx}(u) \approx \dfrac{f(u+1) - f(u-1)}{(u+1)-(u-1)} = \dfrac{f(u+1) - f(u-1)}{2}$
+\end{center}
+\end{frame}
+\subsection{Two Dimensional Approach}
+\begin{frame}
+	\frametitle{Two dimensional approach}
+	If working with full images,we got two dimensions and therefore two partial derivations:
+	\begin{center}	
+		$I_x = \dfrac{\partial I}{\partial x}(u,v) , I_y = \dfrac{\partial I}{\partial y}(u,v)$
+	\end{center}
+	the \textbf{gradient} at the point \textit{(u,v)} is \newline
+	\begin{center}
+			$\nabla I(u,v) =  \begin{pmatrix}
+		I_x(u,v) \\ I_y(u,v)
+		\end{pmatrix}$
+		
+	\end{center}	
+	\newline
+	And the \textbf{magnitude} is \newline
+	\begin{center}
+		$|\nabla I|=\sqrt{I_x^2 + I_y^2}$
+	\end{center}
+	~\newline
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/2DEdgeGradient}
+		\caption{}
+		\label{fig:2dedgegradient}
+	\end{figure}
+\end{frame}
+\subsection{Filters}
+\begin{frame}
+	\frametitle{Implementation with filters}
+	Expressing the gradient as a \textit{linear filter} is simple:
+	\begin{center}
+			$I_x = \begin{bmatrix}
+		-0.5 & 0 & 0.5
+		\end{bmatrix}
+		I_y = \begin{bmatrix}
+		-0.5 \\ 0 \\ 0.5
+		\end{bmatrix}$
+	\end{center}
+\end{frame}
 \section{Advanced gradient-based edgedetection}
 
 \section{Compass Operators}

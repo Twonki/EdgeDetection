@@ -1,7 +1,0 @@
-\beamer@sectionintoc {1}{What makes an Edge?}{2}{0}{1}
-\beamer@subsectionintoc {1}{1}{Problems}{4}{0}{1}
-\beamer@subsectionintoc {1}{2}{Definition}{7}{0}{1}
-\beamer@sectionintoc {2}{Basics of gradient-based edgedetection}{8}{0}{2}
-\beamer@sectionintoc {3}{Advanced gradient-based edgedetection}{9}{0}{3}
-\beamer@sectionintoc {4}{Compass Operators}{10}{0}{4}
-\beamer@sectionintoc {5}{Edge Sharpening}{11}{0}{5}
