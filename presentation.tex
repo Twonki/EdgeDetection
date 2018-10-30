@@ -4,6 +4,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+%%Required for Felix 4-Faced SubFigures
+\usepackage{subcaption}
+\usepackage{mwe}
+
 \author{Leonhard Applis}
 \title{Edge Detection}
 \subtitle{}
@@ -35,7 +39,7 @@
 				\label{fig:kadse}
 			\end{figure}
 		\end{column}
-		\begin{column}{0.5\textwidth}  %%<--- here
+		\begin{column}{0.5\textwidth} 
 			\begin{center}
 			\begin{figure}
 				\centering
@@ -59,7 +63,7 @@
 				\label{fig:HighContrast}
 			\end{figure}
 		\end{column}
-		\begin{column}{0.5\textwidth}  %%<--- here
+		\begin{column}{0.5\textwidth} 
 			\begin{center}
 				\begin{figure}
 					\centering
@@ -167,40 +171,48 @@
 		\label{fig:2dedgegradient}
 	\end{figure}
 \end{frame}
-
+\subsection{Simple Example}
 \begin{frame}
 	\frametitle{Example with Felix}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.3\linewidth]{images/Kadse}
-				\caption[Raw Felix]{Raw Felix}
-				\label{fig:RawFelix}
-			\end{figure}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.3\linewidth]{images/KadseSimpleY}
-				\caption[Felix' Y-Edges]{Felix' Y-Edges}
-				\label{fig:FelixY}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.3\linewidth]{images/KadseSimpleX}
-				\caption[Felix' X-Edges]{Felix' X-Edges}
-				\label{fig:FelixX}
-			\end{figure}
-			\begin{figure}
-				\includegraphics[width=0.3\linewidth]{images/KadseSimple}
-				\caption[Felix' Edges]{Felix' Edges}
-				\label{fig:FelixSimple}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{center}
-		Note: All images have a 50\% increased brightness
-	\end{center}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.175\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{images/Kadse}
+			\caption[I]%
+			{{\small I}}    
+			\label{fig:RawFelix}
+		\end{subfigure}
+		\quad
+		\begin{subfigure}[b]{0.175\textwidth}  
+			\centering 
+			\includegraphics[width=\textwidth]{images/KadseSimpleX}
+			\caption[]%
+			{{\small $I_x$}}    
+			\label{fig:FelixX}
+		\end{subfigure}
+		\vskip\baselineskip
+		\begin{subfigure}[b]{0.175\textwidth}   
+			\centering 
+			\includegraphics[width=\textwidth]{images/KadseSimpleY}
+			\caption[]%
+			{{\small $I_y$}}    
+			\label{fig:FelixY}
+		\end{subfigure}
+		\quad
+		\begin{subfigure}[b]{0.175\textwidth}   
+			\centering 
+			\includegraphics[width=\textwidth]{images/KadseSimple}
+			\caption[]%
+			{{\small $|\nabla I |$}}    
+			\label{fig:FelixSimple}
+		\end{subfigure}
+		\caption[Simple Filters applied to Felix ]
+		{\small Simple Filters applied to Felix\footnote{All images have a 50\% increased brightness}} 
+		\label{fig:FullSimpleFelix}
+	\end{figure}
+	
+	
 \end{frame}
 \subsection{Filters}
 \begin{frame}
@@ -221,7 +233,117 @@
 \end{frame}
 
 \section{Advanced gradient-based edgedetection}
-
+\subsection{3x3 Filters}
+\begin{frame}
+	\frametitle{Prewitt Operator}
+	\begin{center}
+		Idea: Include neighboorhood
+	\end{center}
+	~\newline
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				$H^P_x = \begin{bmatrix}
+				-1 & 0 & 1 \\ -1 & 0 & 1 \\ -1 & 0 & 1
+				\end{bmatrix} $
+			\end{center}	
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+			\begin{center}
+				$H^P_y = \begin{bmatrix}
+				-1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1
+				\end{bmatrix} $
+			\end{center}
+		\end{column}
+	\end{columns}
+	~\newline
+	\begin{center}
+		$\nabla I^P(u,v)\approx \dfrac{1}{6} \cdot \begin{pmatrix}
+		(I\ast H^P_x)(u,v) \\ (I\ast H^P_y)(u,v) 
+		\end{pmatrix}$
+	\end{center}
+\end{frame}
+\begin{frame}
+	\frametitle{Sobel}
+	\begin{center}
+		Idea: Include neighboorhood but weight center more
+	\end{center}
+	~\newline	
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				$H^S_x = \begin{bmatrix}
+				-1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1
+				\end{bmatrix} $
+			\end{center}	
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+			\begin{center}
+				$H^S_y = \begin{bmatrix}
+				-1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1
+				\end{bmatrix} $
+			\end{center}
+		\end{column}
+	\end{columns}
+	~\newline
+	\begin{center}
+		$\nabla I^S(u,v)\approx \dfrac{1}{8} \cdot \begin{pmatrix}
+		(I\ast H^S_x)(u,v) \\ (I\ast H^S_y)(u,v) 
+		\end{pmatrix}$
+	\end{center}
+\end{frame}
+\subsection{3x3 Examples}
+\begin{frame}
+	\frametitle{Comparison with Felix}
+	\begin{columns}
+		\begin{column}{0.33\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{images/KadseSimple}
+				\caption[Simple edge filter]{Simple edge filter\footnote{Only the first Picture has increased brigthness}}
+				\label{fig:Simple}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.33\textwidth}  
+			\begin{center}
+				\begin{figure}
+					\centering
+					\includegraphics[width=0.8\linewidth]{images/KadsePrewitt}
+					\caption[Prewitt Operator]{Prewitt Operator}
+					\label{fig:KadsePrewitt}
+				\end{figure}
+			\end{center}
+		\end{column}
+	\begin{column}{0.33\textwidth}  
+		\begin{center}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{images/KadseSobel}
+				\caption[Sobel Operator]{Sobel Operator}
+				\label{fig:KadseSobel}
+			\end{figure}
+		\end{center}
+	\end{column}
+	\end{columns}
+\end{frame}
+\subsection{Evaluations}
+\begin{frame}
+	\frametitle{Evaluations}
+	\begin{center}
+		\textbf{general magnitude}: $E(u,v) = \sqrt{I_x^2(u,v)+I_y^2(u,v)}$
+		\newline holds for every Operator 
+		~\newline
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.5\linewidth]{images/EdgeDirection}
+			\caption[Visualisation of edge direction]{Visualisation of edge direction}
+			\label{fig:edgedir}
+		\end{figure}
+		~\newline
+		$\Phi(u,v)=\tan^{-1}\left(\dfrac{I_y(u,v)}{I_x(u,v)}\right)=\arctan(I_x(u,v),I_y(u,v))$
+	\end{center}
+	
+\end{frame}
 \section{Compass Operators}
 
 \section{Edge Sharpening}
