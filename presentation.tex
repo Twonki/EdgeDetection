@@ -25,20 +25,75 @@
 \frame{\titlepage}
 \section{What makes an Edge?}
 \begin{frame}
-	Picture of Felix vs Edges of Felix
+	\frametitle{What makes an edge?}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{images/Kadse}
+				\caption[Felix]{Felix}
+				\label{fig:kadse}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}  %%<--- here
+			\begin{center}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{images/KadseCanny}
+				\caption[Felix's Edges]{Felix's Edges}
+				\label{fig:kadseCanny}
+			\end{figure}
+			\end{center}
+		\end{column}
+	\end{columns}
 \end{frame}
 \subsection{Problems}
 \begin{frame}
-\frametitle{Problem I: Low Contrast}
-
+\frametitle{Problem I: Contrast}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{images/KadseHighContrast}
+			\caption[High Contrast Felix]{High Contrast Felix}
+			\label{fig:HighContrast}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.5\textwidth}  %%<--- here
+		\begin{center}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{images/KadseLowContrast}
+				\caption[Low Contrast Felix]{Low Contrast Felix}
+				\label{fig:LowContrast}
+			\end{figure}
+		\end{center}
+	\end{column}
+\end{columns}
 \end{frame}
+
 \begin{frame}
-\frametitle{Problem II: Low Contrast}
-
+\frametitle{Problem II: Smoothness}
+	\begin{center}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.4\linewidth]{images/KadseSmooth}
+			\caption[Smooth Felix]{Smooth Felix}
+			\label{fig:Smooth}
+		\end{figure}
+	\end{center}
 \end{frame}
+
 \begin{frame}
 \frametitle{Problem III: Noise}
-
+\begin{center}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.4\linewidth]{images/KadseSalty}
+		\caption[Salted Felix]{Salted Felix}
+		\label{fig:Salted}
+	\end{figure}
+\end{center}
 \end{frame}
 \subsection{Definition}
 \begin{frame}
@@ -49,12 +104,12 @@
 \begin{frame}
 \frametitle{Requirements}
 \begin{enumerate}
-	\item color values known 
+	\item color values known (for examples only grayscale)
 	\item picture scale known 
 	\item loaded as pixelmatrix 
 \end{enumerate}
 \end{frame}	
-\subsection{One dimensional approach}
+\subsection{1D approach}
 \begin{frame}
 \frametitle{One dimensional approach}
 \begin{center}
@@ -82,7 +137,7 @@ Problem: the image function is discrete, therefore we need to approximate the de
 	$\dfrac{df}{dx}(u) \approx \dfrac{f(u+1) - f(u-1)}{(u+1)-(u-1)} = \dfrac{f(u+1) - f(u-1)}{2}$
 \end{center}
 \end{frame}
-\subsection{Two Dimensional Approach}
+\subsection{2D Approach}
 \begin{frame}
 	\frametitle{Two dimensional approach}
 	If working with full images,we got two dimensions and therefore two partial derivations:
