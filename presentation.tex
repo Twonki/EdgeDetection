@@ -24,6 +24,8 @@
 	\tableofcontents[currentsection,currentsubsection]
 \end{frame}
 }
+%%------------------ for longer presentations required
+\pgfmathsetmacro{\progress}{\insertframestartpage/\inserttotalframenumber}
 
 \begin{document}
 \frame{\titlepage}
@@ -340,7 +342,85 @@
 	\end{center}
 	
 \end{frame}
+
 \section{Compass Operators}
+\begin{frame}
+	\frametitle{Compass Operators}
+	\begin{columns}
+		\begin{column}{0.69\textwidth}
+			\textbf{Problem:} The stronger a filter responses to edge-like structures, the more sensitive it is to orientation \newline
+			$\Uparrow Orientation \approx \Downarrow Edges$ $ \Uparrow Edges \approx \Downarrow Orientation $ \newline
+			\textbf{Solution:} Apply 8 filters for each direction of the compass ~\newline \textbf{Produce two pictures:} One for the edge-strength taking the magnitude of the strongest activated filter, ~\newline one for the direction marking the strongest filter with colour 
+		\end{column}
+		\begin{column}{0.29\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.45\textwidth]{images/Kompass}
+				\label{fig:Kompass}
+			\end{figure}
+		\end{column}	
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extended Sobel Operator}
+	\begin{columns}
+	\begin{column}{0.6\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{images/ExtendedSobel}
+			\caption[Extended Sobel Operator]{Extended Sobel Operator}
+			\label{fig:ESobel}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		Note: Its only required to apply 4 filters, as they are symetric
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Extended Sobel Example}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{images/PhiFelix}
+			\caption[$\Phi^{ES}(Felix)$]{$\Phi^{ES}(Felix)$}
+			\label{fig:PhiFelix}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{images/PhiFelixColoured}
+			\caption[Colour encoding]{Colour encoding}
+			\label{fig:PhiFelixColour}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Kirsch Operator}
+\begin{columns}
+	\begin{column}{0.6\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{images/KirschOperator}
+			\caption[Kirsch Operator]{Kirsch Operator}
+			\label{fig:Kirsch}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{images/KadseKirsch}
+			\caption[Felix with Kirsch]{Felix with Kirsch}
+			\label{fig:FelixKirsch}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
 
 \section{Edge Sharpening}
 
