@@ -219,6 +219,7 @@
 \subsection{Filters}
 \begin{frame}
 	\frametitle{Implementation with filters}
+	\label{SimpleFilters}
 	Expressing the gradient as a \textit{linear filter} is simple:
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -420,6 +421,62 @@
 		\end{figure}
 	\end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Canny-Edge Operator}
+	\begin{enumerate}
+		\item Pre-Processing
+		\item Edge Localization
+		\item Edge Tracing and hysteresis threshholding
+	\end{enumerate}
+	For complex applications the Canny-Edge-Algorithm is done with more than 3x3 Filters
+\end{frame}
+
+\begin{frame}
+	\frametitle{Canny-Edge}
+	\framesubtitle{Pre-Processing}
+	\begin{enumerate}
+		\item Smooth Image with Gaussian-Filter
+		\item Apply simple filters (See \ref{SimpleFilters})
+		\item Calculate magnitude
+	\end{enumerate}
+	Also required: $\sigma$ as Gauss-Radious and $t_1,t_2$ for thresholding edges
+\end{frame}
+
+\begin{frame}
+	\frametitle{Canny-Edge}
+	\framesubtitle{Edge-Localization}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/CannyEdgeLocalization}
+		\caption[Edge-Localization]{Edge-Localization}
+		\label{fig:cannyedgelocalization}
+	\end{figure}
+	Operate over the magnitude-image:\newline
+	Null every value that is not a local-maximum in any direction 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Canny-Edge}
+	\framesubtitle{Hysteresis Thresholding}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{enumerate}
+				\item Find points with $E \geq t_1$
+				\item Add Every Neighboor with $E \geq t_2$
+				\item Repeat $2$ until image is processed 
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/KadseCanny}
+				\caption[Canny-Edge Felix]{Canny-Edge Felix}
+				\label{fig:kadsecanny}
+			\end{figure}	
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Edge Sharpening}
