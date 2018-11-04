@@ -109,14 +109,6 @@
 \end{frame}	
 
 \section{Basics of gradient-based edgedetection}
-\begin{frame}
-	\frametitle{Requirements}
-	\begin{enumerate}
-		\item color values known (for examples only grayscale)
-		\item picture scale known 
-		\item loaded as pixelmatrix 
-	\end{enumerate}
-\end{frame}	
 
 \subsection{1D approach}
 \begin{frame}
@@ -478,9 +470,63 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-
 \section{Edge Sharpening}
+\begin{frame}
+	\frametitle{Laplacian-Filter}
+	\framesubtitle{Concept}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Idea: Alter \textit{steep} imagepoints \newline
+			~\newline
+			$\hat{f}(x)= f(x) + \omega \cdot f''(x)$ \newline
+			~\newline
+			Where $\omega$ is a weight for alternation, $f(x)$ is the image function
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{images/Laplacian}
+				\caption[Laplacian Plot]{Applying the Laplacian-Filter}
+				\label{fig:laplacian}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}
+	\frametitle{Laplacian-Filter}
+	\framesubtitle{Implementation}
 
+		Laplacian Operator: $(\nabla^2f)(x,y) = \dfrac{\partial^2f}{\partial^2x}(x,y) +\dfrac{\partial^2f}{\partial^2y}(x,y)$
+		~\newline Expressed as filters: 
+	\begin{center}
+		~\newline ~\newline $\dfrac{\partial^2f}{\partial^2x}(x,y) \approx \begin{bmatrix} 1 & -2 & 1 \end{bmatrix}, \dfrac{\partial^2f}{\partial^2y}(x,y) \approx \begin{bmatrix} 1 \\ -2 \\ 1 \end{bmatrix}$ 
+		~\newline
+		$\Rightarrow H^L \approx \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix}$
+	\end{center}
+\end{frame}
+\begin{frame}
+	\frametitle{Laplacian-Filter}
+	\framesubtitle{Variants and Example}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			common variants: ~\newline ~\newline
+			$H^L \approx \begin{bmatrix} 1 & 1 & 1\\ 1 & -8 & 1 \\ 1 & 1 & 1 \end{bmatrix}$
+			
+			~\newline ~\newline
+			$H^L \approx \begin{bmatrix} 1 & 2 & 1\\2 & -12 & 2 \\ 1 & 2 & 1 \end{bmatrix}$
+			
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{images/KadseLaplace}
+				\caption[FelixLaplace]{Laplacian Filter applied to Felix}
+				\label{fig:kadselaplace}
+			\end{figure}
+			
+		\end{column}
+	\end{columns}
+\end{frame}
 \section{Summary}
 
 \end{document}
