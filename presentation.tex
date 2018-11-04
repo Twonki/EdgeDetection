@@ -10,7 +10,6 @@
 
 \author{Leonhard Applis}
 \title{Edge Detection}
-\subtitle{}
 \institute{TH Nürnberg} % (optional)
 \date{05.11.2018}
 \subject{AvBildMed}
@@ -53,7 +52,6 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-\subsection{Problems}
 \begin{frame}
 	\frametitle{Problem I: Contrast}
 	\begin{columns}
@@ -102,7 +100,6 @@
 	\end{center}
 \end{frame}
 
-\subsection{Definition}
 \begin{frame}
 	\frametitle{Definition}
 	In Image Processing, an edge can be defined as a set of contiguous pixel positions where an abrupt change of intensity, gray- or color-values occur. Edges represent boundaries between objects and background. Sometimes, the edge-pixel-sequence may be broken due to insufficient intensity difference.(Malay K. Pakhira )
@@ -110,7 +107,6 @@
 
 \section{Basics of gradient-based edgedetection}
 
-\subsection{1D approach}
 \begin{frame}
 	\frametitle{One dimensional approach}
 	\begin{center}
@@ -138,7 +134,6 @@
 	\end{center}
 \end{frame}
 
-\subsection{2D Approach}
 \begin{frame}
 	\frametitle{Two dimensional approach}
 	If working with full images,we got two dimensions and therefore two partial derivations:
@@ -165,7 +160,7 @@
 		\label{fig:2dedgegradient}
 	\end{figure}
 \end{frame}
-\subsection{Simple Example}
+
 \begin{frame}
 	\frametitle{Example with Felix}
 	\begin{figure}
@@ -208,7 +203,6 @@
 	
 	
 \end{frame}
-\subsection{Filters}
 \begin{frame}
 	\frametitle{Implementation with filters}
 	\label{SimpleFilters}
@@ -228,7 +222,6 @@
 \end{frame}
 
 \section{Advanced gradient-based edgedetection}
-\subsection{3x3 Filters}
 \begin{frame}
 	\frametitle{Prewitt Operator}
 	\begin{center}
@@ -287,7 +280,6 @@
 		\end{pmatrix}$
 	\end{center}
 \end{frame}
-\subsection{3x3 Examples}
 \begin{frame}
 	\frametitle{Comparison with Felix}
 	\begin{columns}
@@ -317,7 +309,6 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-\subsection{Evaluations}
 \begin{frame}
 	\frametitle{Evaluations}
 	\begin{center}
@@ -414,7 +405,7 @@
 	\end{column}
 \end{columns}
 \end{frame}
-
+\section{Canny-Edge}
 \begin{frame}
 	\frametitle{Canny-Edge Operator}
 	\begin{enumerate}
@@ -500,7 +491,7 @@
 		~\newline Expressed as filters: 
 	\begin{center}
 		~\newline ~\newline $\dfrac{\partial^2f}{\partial^2x}(x,y) \approx \begin{bmatrix} 1 & -2 & 1 \end{bmatrix}, \dfrac{\partial^2f}{\partial^2y}(x,y) \approx \begin{bmatrix} 1 \\ -2 \\ 1 \end{bmatrix}$ 
-		~\newline
+		~\newline ~\newline ~\newline ~\newline
 		$\Rightarrow H^L \approx \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix}$
 	\end{center}
 \end{frame}
