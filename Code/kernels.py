@@ -15,3 +15,12 @@ extendedSobel = [np.asarray(sobelY), np.asarray(sobelDF), np.asarray(sobelX), np
 
 kirschX = [[-5,3,3],[-5,0,3],[-5,3,3]]
 kirschY = [[-5,-5,-5],[3,0,3],[3,3,3]]
+
+
+
+laplacian1 = [[0,1,0],[0,-2,0],[0,1,0]]
+laplacian2 = [[1,0,0],[0,-2,0],[0,0,1]]
+laplacian3 = [[0,0,0],[1,-2,1],[0,0,0]]
+laplacian4 = [[0,0,1],[0,-2,0],[1,0,0]]
+
+laplacianCompass = [laplacian1,laplacian2,laplacian3,laplacian4]
